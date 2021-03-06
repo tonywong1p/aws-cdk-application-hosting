@@ -7,13 +7,13 @@ with open("./user_data/user_data.sh") as f:
     user_data = f.read()
 
 
-class AppTierStack(core.Stack):
+class AppStack(core.Stack):
 
     def __init__(self, scope: core.Construct, construct_id: str, vpc, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         # The code that defines your stack goes here
-        alb = elbv2.ApplicationLoadBalancer(self, "LB",
+        alb = elbv2.ApplicationLoadBalancer(self, "ALB",
                                             vpc=vpc,
                                             internet_facing=True
                                             )
@@ -36,13 +36,18 @@ class AppTierStack(core.Stack):
                                            vpc=vpc,
                                            instance_type=ec2.InstanceType(
                                                "t3.small"),
-                                           machine_image=ec2.AmazonLinuxImage(
-                                               user_data=ec2.UserData.custom(
-                                                   user_data)
-                                           ),
+                                           machine_image=ec2.MachineImage.generic_linux({
+                                               "ap-east-1": "ami-0312f467545f742c4"
+                                           }),
                                            min_capacity=2,
                                            max_capacity=5,
-                                           security_group=security_group
+                                           security_group=security_group,
+                                           block_devices=[autoscaling.BlockDevice(
+                                               device_name="EBSApp",
+                                               volume=autoscaling.BlockDeviceVolume.ebs(20,
+                                                                                        encrypted=True
+                                                                                        )
+                                           )]
                                            )
         asg.scale_on_cpu_utilization("KeepSpareCPU",
                                      target_utilization_percent=70
@@ -53,7 +58,8 @@ class AppTierStack(core.Stack):
                                      targets=[asg]
                                      )
 
+        # Output
         core.CfnOutput(self, "Output",
                        value=alb.load_balancer_dns_name)
         self.security_group = security_group
-
+        self.alb = alb

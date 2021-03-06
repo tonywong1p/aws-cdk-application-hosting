@@ -22,7 +22,12 @@ setuptools.setup(
         "aws-cdk.core==1.91.0",
         "aws-cdk.aws_ec2",
         "aws-cdk.aws_elasticloadbalancingv2",
-        "aws_cdk.aws_autoscaling"
+        "aws-cdk.aws_autoscaling",
+        "aws-cdk.aws_rds",
+        "aws-cdk.aws_certificatemanager",
+        "aws-cdk.aws_cloudfront",
+        "aws-cdk.aws_cloudfront_origins",
+        "aws-cdk.aws_route53",
     ],
 
     python_requires=">=3.6",

@@ -56,3 +56,8 @@ command.
  * `cdk docs`        open CDK documentation
 
 Enjoy!
+
+
+## Missing Features WIP
+- EBS encryption
+- S3 VPC endpoint

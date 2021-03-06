@@ -32,10 +32,17 @@ class VpcStack(core.Stack):
                       ]
                       )
 
-        host = ec2.BastionHostLinux(self, "BastionHost",
+        host = ec2.BastionHostLinux(self, "cdk-vpc-BastionHost",
                                     vpc=vpc,
                                     subnet_selection=ec2.SubnetSelection(
-                                          subnet_type=ec2.SubnetType.PUBLIC)
+                                          subnet_type=ec2.SubnetType.PUBLIC),
+                                    # block_devices=[ec2.BlockDevice(
+                                    #     device_name="EBSBastionHost_CDK",
+                                    #     volume=ec2.BlockDeviceVolume.ebs(30,
+                                    #                                      encrypted=True,
+                                    #                                      delete_on_termination=True
+                                    #                                      )
+                                    # )]
                                     )
 
         core.CfnOutput(self, "Bastion Host Public IP",
