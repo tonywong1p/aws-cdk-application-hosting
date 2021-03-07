@@ -35,7 +35,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Architecture
 ![Architecture Diagram](./images/architecture.png)
-Stack ID | Services | Dependency
+Stack ID | Services | Dependent
 ------------ | ------------- | -------------
 cdk-vpc | Subnets, NAT Gateway, Bastion Host | -
 cdk-app | Application Load-Balancer, Auto-scaling group, EC2 | cdk-vpc
