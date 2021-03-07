@@ -13,19 +13,17 @@ class DbStack(core.Stack):
                                                engine=rds.DatabaseInstanceEngine.mysql(
                                                    version=rds.MysqlEngineVersion.VER_8_0_19
                                                ),
+                                               instance_type=ec2.InstanceType.of(
+                                                   ec2.InstanceClass.MEMORY5, ec2.InstanceSize.LARGE),
+                                               allocated_storage=100,
+                                               multi_az=True,
                                                vpc=vpc,
                                                vpc_subnets={
                                                    "subnet_type": ec2.SubnetType.PRIVATE
                                                },
-                                               publicly_accessible=True
+                                               publicly_accessible=False,
+                                               storage_encrypted=True,
                                                )
-
-        replica_instance = rds.DatabaseInstanceReadReplica(self, "ReadReplica",
-                                                           source_database_instance=source_instance,
-                                                           instance_type=ec2.InstanceType.of(
-                                                               ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.LARGE),
-                                                           vpc=vpc
-                                                           )
 
         # core.CfnOutput(self, "Bastion Host Public IP",
         #                value=host.instance_public_ip)

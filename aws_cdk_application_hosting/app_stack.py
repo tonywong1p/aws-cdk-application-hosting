@@ -42,12 +42,12 @@ class AppStack(core.Stack):
                                            min_capacity=2,
                                            max_capacity=5,
                                            security_group=security_group,
-                                           block_devices=[autoscaling.BlockDevice(
-                                               device_name="EBSApp",
-                                               volume=autoscaling.BlockDeviceVolume.ebs(20,
-                                                                                        encrypted=True
-                                                                                        )
-                                           )]
+                                        #    block_devices=[autoscaling.BlockDevice(
+                                        #        device_name="EBSApp",
+                                        #        volume=autoscaling.BlockDeviceVolume.ebs(20,
+                                        #                                                 encrypted=True
+                                        #                                                 )
+                                        #    )]
                                            )
         asg.scale_on_cpu_utilization("KeepSpareCPU",
                                      target_utilization_percent=70

@@ -59,5 +59,5 @@ Enjoy!
 
 
 ## Missing Features WIP
-- EBS encryption
+- EBS encryption & Delete on termninate on Bastion host & autoscaling group EC2
 - S3 VPC endpoint

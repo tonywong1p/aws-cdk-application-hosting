@@ -10,5 +10,9 @@ class S3Stack(core.Stack):
 
         # The code that defines your stack goes here
         bucket = s3.Bucket(self, "MyCDKBucket",
-                           encryption=BucketEncryption.KMS_MANAGED
+                           encryption=s3.BucketEncryption.KMS_MANAGED
                            )
+
+        s3_endpoint = vpc.add_gateway_endpoint("S3Endpoint",
+                                                      service=ec2.GatewayVpcEndpointAwsService.S3
+                                                      )

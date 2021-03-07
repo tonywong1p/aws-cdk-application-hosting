@@ -28,6 +28,8 @@ setuptools.setup(
         "aws-cdk.aws_cloudfront",
         "aws-cdk.aws_cloudfront_origins",
         "aws-cdk.aws_route53",
+        "aws-cdk.aws_route53_targets",
+        "aws-cdk.aws_wafv2"
     ],
 
     python_requires=">=3.6",
