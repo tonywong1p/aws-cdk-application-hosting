@@ -49,10 +49,11 @@ $ cdk deploy cdk-vpc cdk-app cdk-db
 ```
 Make sure dependent stack is deployed before deploying a certain stack. For instance, make sure to deploy `cdk-app` before deploying `cdk-cdn` (Kinda a simple architectural logic, you need to have an origin before having a CDN distribution).
 
-## Coming Up
+## Roadmap
 - EBS encryption & Delete on termninate on Bastion host & autoscaling group EC2
 - WAFv2 managed rule on Cloudfront
 - Add Environment variable to deploy resources cross-region
+- Add key pairs to EC2
 
 ## License
 This library is licensed under the Apache 2.0 License.
