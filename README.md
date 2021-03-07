@@ -52,6 +52,7 @@ Make sure dependent stack is deployed before deploying a certain stack. For inst
 ## Coming Up
 - EBS encryption & Delete on termninate on Bastion host & autoscaling group EC2
 - WAFv2 managed rule on Cloudfront
+- Add Environment variable to deploy resources cross-region
 
 ## License
 This library is licensed under the Apache 2.0 License.
