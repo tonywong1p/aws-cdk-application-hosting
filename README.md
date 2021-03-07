@@ -35,15 +35,15 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Architecture
 ![Architecture Diagram](./images/architecture.png)
-Stack Name | Services | Dependency
+Stack ID | Services | Dependency
 ------------ | ------------- | -------------
-VPC Stack | Subnets, NAT Gateway, Bastion Host | -
-App Stack | Application Load-Balancer, Auto-scaling group, EC2 | VPC Stack
-DB Stack | Multi-AZ RDS | VPC Stack
-CDN Stack | Cloudfront, ACM, Route 53 | App Stack
-S3 Stack | S3 bucket, Gateway VPC Endpoint | VPC Stack
+cdk-vpc | Subnets, NAT Gateway, Bastion Host | -
+cdk-app | Application Load-Balancer, Auto-scaling group, EC2 | cdk-vpc
+cdk-db | Multi-AZ RDS | cdk-vpc
+cdk-cdn | Cloudfront, ACM, Route 53 | cdk-app
+cdk-s3 | S3 bucket, Gateway VPC Endpoint | cdk-vpc
 
-This architecture contains multiple stacks that you can selectively deploy based on your project needs. For example, if you only need auto-scaling EC2 and RDS to serve your dynamic application, you can run following command.
+This architecture contains multiple stacks that you can selectively deploy based on your project needs. For example, if you only need auto-scaling EC2 and RDS to serve your dynamic application, you can deploy only this three stacks:
 ```
 $ cdk deploy cdk-vpc cdk-app cdk-db
 ```
