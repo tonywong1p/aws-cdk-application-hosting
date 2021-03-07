@@ -11,6 +11,7 @@ from aws_cdk_application_hosting.cdn_stack import CdnStack
 
 
 app = core.App()
+# env_hk = core.Environment(region="ap-east-1")
 
 vpc_stack = VpcStack(app,"cdk-vpc")
 app_stack = AppStack(app, "cdk-app", vpc=vpc_stack.vpc)

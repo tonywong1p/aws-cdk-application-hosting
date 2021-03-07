@@ -58,6 +58,8 @@ command.
 Enjoy!
 
 
+# Architecture
+![Architecture Diagram](./images/architecture.png)
+
 ## Missing Features WIP
 - EBS encryption & Delete on termninate on Bastion host & autoscaling group EC2
-- S3 VPC endpoint
