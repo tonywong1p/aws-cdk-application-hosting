@@ -1,37 +1,13 @@
+# AWS HA architecture CDK
+This repository means to construct CDK codebased to automate HA architecture deployment on AWS, with common AWS services organized into stacks. All dependecies between stacks are well defined, so you can selectively pick only the useful stacks specifically to your project.
 
-# Welcome to your CDK Python project!
+## Get started
+Make sure you have following environments installed on your machine.
+- Lastest AWS CLI version 2 with aws credentials configured (Ref:https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+- Lastest AWS CDK Toolkit (Ref:https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html)
+- Python AWS CDK applications require Python 3.6 or later
 
-This is a blank project for Python development with CDK.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
-
-To manually create a virtualenv on MacOS and Linux:
-
-```
-$ python -m venv .venv
-```
-
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
-
-```
-$ source .venv/bin/activate
-```
-
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
+Once the environments are set up, you can install the required dependencies.
 
 ```
 $ pip install -r requirements.txt
@@ -55,11 +31,14 @@ command.
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-Enjoy!
+The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-
-# Architecture
+## Architecture
 ![Architecture Diagram](./images/architecture.png)
 
-## Missing Features WIP
+## Coming Up
 - EBS encryption & Delete on termninate on Bastion host & autoscaling group EC2
+- WAFv2 managed rule on Cloudfront
+
+## License
+This library is licensed under the Apache 2.0 License.
